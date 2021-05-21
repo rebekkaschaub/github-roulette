@@ -1,18 +1,9 @@
 import styled from 'styled-components/macro'
-import { useEffect, useState } from 'react'
-import githubApi from './service/githubAPI'
+import Homepage from './pages/Homepage'
+import useUser from './hooks/useUser'
 
 function App() {
-  const [profile, setProfile] = useState({})
-  const [error, setError] = useState('')
-
-  useEffect(() => {
-    githubApi
-      .get('https://api.github.com/user')
-      .then(response => response.data)
-      .then(setProfile)
-      .catch(error => setError(error.response.status))
-  }, [])
+  const { profile, error, searchUser, userProfile, errorOtherUser } = useUser()
 
   if (error) {
     return (
@@ -23,13 +14,14 @@ function App() {
   }
 
   return (
-    <Page>
-      <h1>🦄 Hallo, {profile.login} 🦄</h1>
-      <Avatar src={profile.avatar_url} />
-    </Page>
+    <Homepage
+      profile={profile}
+      searchUser={searchUser}
+      userProfile={userProfile}
+      errorOtherUser={errorOtherUser}
+    />
   )
 }
-
 export default App
 
 const Page = styled.main`
@@ -42,10 +34,4 @@ const Page = styled.main`
   left: 0;
   height: 100%;
   width: 100%;
-`
-
-const Avatar = styled.img`
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
 `
