@@ -3,7 +3,6 @@ import Homepage from './pages/Homepage'
 import useUser from './hooks/useUser'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import UserProfilePage from './pages/UserProfilePage'
-import GlobalStyle from './GlobalStyle'
 import RepoPage from './pages/RepoPage'
 
 function App() {
@@ -32,8 +31,8 @@ function App() {
         <Route path={'/users/:name'} exact>
           <UserProfilePage userProfile={userProfile} />
         </Route>
-        <Route path={'/users/:name/:repo'} exact>
-          <RepoPage userProfile={userProfile} getRepos={getRepos} />
+        <Route path={'/users/:name/:repoName'} exact>
+          <RepoPage />
         </Route>
       </Switch>
     </Router>

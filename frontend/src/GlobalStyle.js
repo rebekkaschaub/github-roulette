@@ -13,8 +13,9 @@ export default createGlobalStyle`
     width: 100vm;
     margin: 0;
     padding: 0;
-    color: hotpink;
+    color: deeppink;
     text-shadow: 1px 1px 1px white;
+    font-size: 112.5%;
     border: solid 3px hotpink;
   }
 `

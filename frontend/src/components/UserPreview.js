@@ -32,7 +32,6 @@ const Wrapper = styled.div`
   align-items: center;
   text-align: center;
   background-color: rgba(246, 246, 242, 0.2);
-
   border: solid 2px white;
   border-radius: 10%;
 `
