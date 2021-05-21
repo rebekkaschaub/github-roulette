@@ -3,6 +3,8 @@ import Homepage from './pages/Homepage'
 import useUser from './hooks/useUser'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import UserProfilePage from './pages/UserProfilePage'
+import GlobalStyle from './GlobalStyle'
+import RepoPage from './pages/RepoPage'
 
 function App() {
   const { profile, error, searchUser, userProfile, errorOtherUser, getRepos } =
@@ -27,8 +29,11 @@ function App() {
             errorOtherUser={errorOtherUser}
           />
         </Route>
-        <Route path={'/users/:name'}>
-          <UserProfilePage userProfile={userProfile} getRepos={getRepos} />
+        <Route path={'/users/:name'} exact>
+          <UserProfilePage userProfile={userProfile} />
+        </Route>
+        <Route path={'/users/:name/:repo'} exact>
+          <RepoPage userProfile={userProfile} getRepos={getRepos} />
         </Route>
       </Switch>
     </Router>

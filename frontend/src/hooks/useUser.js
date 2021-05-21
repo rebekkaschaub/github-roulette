@@ -6,7 +6,6 @@ export default function useUser() {
   const [error, setError] = useState('')
   const [errorOtherUser, setErrorOtherUser] = useState()
   const [userProfile, setUserProfile] = useState()
-  const [userRepos, setUserRepos] = useState([])
 
   useEffect(() => {
     githubApi
@@ -28,16 +27,5 @@ export default function useUser() {
       .catch(error => setErrorOtherUser(error.response.status))
   }
 
-  const getRepos = userName => {
-    githubApi
-      .get('https://api.github.com/users/' + userName + '/repos')
-      .then(response => response.data)
-      .then(data => {
-        console.log(data)
-        setUserRepos(data)
-      })
-      .catch(error => console.log(error))
-  }
-
-  return { profile, error, searchUser, userProfile, errorOtherUser, getRepos }
+  return { profile, error, searchUser, userProfile, errorOtherUser }
 }
