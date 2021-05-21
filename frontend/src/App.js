@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import UserProfilePage from './pages/UserProfilePage'
 
 function App() {
-  const { profile, error, searchUser, userProfile, errorOtherUser } = useUser()
+  const { profile, error, searchUser, userProfile, errorOtherUser, getRepos } =
+    useUser()
 
   if (error) {
     return (
@@ -26,8 +27,8 @@ function App() {
             errorOtherUser={errorOtherUser}
           />
         </Route>
-        <Route path={'/users/:id'}>
-          <UserProfilePage userProfile={userProfile} />
+        <Route path={'/users/:name'}>
+          <UserProfilePage userProfile={userProfile} getRepos={getRepos} />
         </Route>
       </Switch>
     </Router>
