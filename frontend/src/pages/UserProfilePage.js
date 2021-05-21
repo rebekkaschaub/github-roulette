@@ -7,7 +7,6 @@ import useRepos from '../hooks/useRepos'
 
 export default function UserProfilePage({ userProfile }) {
   const { name } = useParams()
-
   const { repos } = useRepos(name)
 
   return (

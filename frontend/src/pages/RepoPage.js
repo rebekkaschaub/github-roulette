@@ -1,23 +1,16 @@
 import { useParams } from 'react-router-dom'
-import useRepos from '../hooks/useRepos'
 import styled from 'styled-components/macro'
+import usePullRequest from '../hooks/usePullRequest'
 
 export default function RepoPage() {
-  const { repoName } = useParams()
-  const { name } = useParams()
-
-  const { repos, getRequests } = useRepos(name)
-
-  const pullRequests = getRequests(name, repoName)
-
-  console.log(repoName)
-  const actualRepo = repos.find(item => item.name === repoName)
-  console.log(actualRepo)
+  const { repoName, name } = useParams()
+  const { pullRequests } = usePullRequest(name, repoName)
 
   return (
     <Wrapper>
-      <div>{actualRepo?.name}</div>
-      <div>{pullRequests?.title}</div>
+      {pullRequests.map(pullRequest => (
+        <div>{pullRequest.title}</div>
+      ))}
     </Wrapper>
   )
 }
