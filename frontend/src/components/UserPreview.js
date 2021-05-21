@@ -6,7 +6,7 @@ export default function UserPreview({ userProfile }) {
   let history = useHistory()
 
   function onClick() {
-    history.push('www.google.de')
+    history.push('/users/' + userProfile.id)
     console.log('Klick')
   }
 
