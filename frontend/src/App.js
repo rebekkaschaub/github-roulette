@@ -24,7 +24,7 @@ function App() {
 
   return (
     <Page>
-      <h1>Hallo, {profile.login} 👋🏽</h1>
+      <h1>🦄 Hallo, {profile.login} 🦄</h1>
       <Avatar src={profile.avatar_url} />
     </Page>
   )

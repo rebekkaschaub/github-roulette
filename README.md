@@ -5,4 +5,3 @@
 3. go to your [github settings](https://github.com/settings/tokens) and generate a personal access token. No special access rights necessary
 4. copy generated token and paste it into the `env.local` file
 5. `cd frontend` and `npm start` and `HAPPY HACKING`
-
