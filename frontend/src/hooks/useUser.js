@@ -1,7 +1,7 @@
 import githubApi from '../service/githubAPI'
 import { useEffect, useState } from 'react'
 
-export default function useUser() {
+export default function useUser(userString) {
   const [profile, setProfile] = useState({})
   const [error, setError] = useState('')
   const [errorOtherUser, setErrorOtherUser] = useState()
@@ -15,7 +15,7 @@ export default function useUser() {
       .catch(error => setError(error.response.status))
   }, [])
 
-  const searchUser = userString => {
+  useEffect(() => {
     setErrorOtherUser(false)
     githubApi
       .get('https://api.github.com/users/' + userString)
@@ -25,7 +25,7 @@ export default function useUser() {
         setUserProfile(item)
       })
       .catch(error => setErrorOtherUser(error.response.status))
-  }
+  }, [userString])
 
-  return { profile, error, searchUser, userProfile, errorOtherUser }
+  return { profile, error, userProfile, errorOtherUser }
 }

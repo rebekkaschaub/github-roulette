@@ -1,22 +1,16 @@
-import { useState } from 'react'
-
-export default function UserForm({ searchUser }) {
-  const [userString, setUserString] = useState('')
-
-  function onSubmit(event) {
-    event.preventDefault()
-    searchUser(userString)
+export default function UserForm({ userString, setUserString }) {
+  const handleChange = event => {
+    setUserString(event.target.value)
   }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form>
       <input
         type="text"
         value={userString}
-        onChange={event => setUserString(event.target.value)}
+        onChange={handleChange}
         placeholder="Enter Github Name"
       />
-      <button type="submit">Search</button>
     </form>
   )
 }

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
 import AvatarPreview from '../components/AvatarPreview'
@@ -8,6 +8,7 @@ import useRepos from '../hooks/useRepos'
 export default function UserProfilePage({ userProfile }) {
   const { name } = useParams()
   const { repos } = useRepos(name)
+  const history = useHistory()
 
   return (
     <Wrapper>
@@ -23,6 +24,7 @@ export default function UserProfilePage({ userProfile }) {
           ))}
         </ul>
       </details>
+      <button onClick={() => history.goBack()}>Go back</button>
     </Wrapper>
   )
 }
